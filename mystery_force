@@ -1,0 +1,49 @@
+from __future__ import division
+from visual import *
+
+
+## Objects
+redparticle = sphere(pos=vector(5,4,0), radius=0.25, color=color.red) ## Object that remains still
+greenparticle = sphere(pos=vector(-3,-2,0), radius=0.25, color=color.green) ## Particle that will move
+trail = curve(color=greenparticle.color)
+
+
+## Constants (you may need to change the values in this section)
+k = 0.3        ## interaction coefficient   
+mgreen = 5e-3  ## mass of green particle (particle that will move).  Change this as necessary.
+
+
+## Initial conditions
+pgreen = mgreen*vector(800,800,0) ## initial momentum of green particle.  Change this as necessary.  
+
+## Time setup
+t = 0
+deltat = 5e-6
+
+
+while t < 1:  ## Change how much time elapses as necessary.
+
+    rate(1000000) ## Decrease this number if animation runs too quickly.  Increase it or comment out if animation runs too slowly.
+
+    ## Compute the net force on the green particle
+
+
+
+    ## Update the momentum of the green particle
+
+
+
+    ## Position update of the green particle
+    greenparticle.pos = greenparticle.pos + pgreen/mgreen*deltat
+
+
+    ## Append trail to follow the green particle
+    trail.append(pos=greenparticle.pos)
+
+    ## Increase time
+    t = t + deltat
+
+## Print final values
+
+print("final position=", greenparticle.pos)
+print("final velocity=", pgreen/mgreen)
